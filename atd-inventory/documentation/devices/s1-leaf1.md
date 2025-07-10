@@ -205,7 +205,6 @@ vlan internal order ascending range 1006 1199
 | VLAN ID | Name | Trunk Groups |
 | ------- | ---- | ------------ |
 | 110 | Tenant_A_OP_Zone_1 | - |
-| 160 | Tenant_A_VMOTION | - |
 | 3009 | MLAG_L3_VRF_Tenant_A_OP_Zone | MLAG |
 | 4093 | MLAG_L3 | MLAG |
 | 4094 | MLAG | MLAG |
@@ -216,9 +215,6 @@ vlan internal order ascending range 1006 1199
 !
 vlan 110
    name Tenant_A_OP_Zone_1
-!
-vlan 160
-   name Tenant_A_VMOTION
 !
 vlan 3009
    name MLAG_L3_VRF_Tenant_A_OP_Zone
@@ -428,7 +424,6 @@ interface Vlan4094
 | VLAN | VNI | Flood List | Multicast Group |
 | ---- | --- | ---------- | --------------- |
 | 110 | 10110 | - | - |
-| 160 | 55160 | - | - |
 
 ##### VRF to VNI and Multicast Group Mappings
 
@@ -446,7 +441,6 @@ interface Vxlan1
    vxlan virtual-router encapsulation mac-address mlag-system-id
    vxlan udp-port 4789
    vxlan vlan 110 vni 10110
-   vxlan vlan 160 vni 55160
    vxlan vrf Tenant_A_OP_Zone vni 10
 ```
 
@@ -589,7 +583,6 @@ ASN Notation: asplain
 | VLAN Aware Bundle | Route-Distinguisher | Both Route-Target | Import Route Target | Export Route-Target | Redistribute | VLANs |
 | ----------------- | ------------------- | ----------------- | ------------------- | ------------------- | ------------ | ----- |
 | Tenant_A_OP_Zone | 192.0.255.3:10 | 10:10 | - | - | learned | 110 |
-| Tenant_A_VMOTION | 192.0.255.3:55160 | 55160:55160 | - | - | learned | 160 |
 
 #### Router BGP VRFs
 
@@ -648,12 +641,6 @@ router bgp 65101
       route-target both 10:10
       redistribute learned
       vlan 110
-   !
-   vlan-aware-bundle Tenant_A_VMOTION
-      rd 192.0.255.3:55160
-      route-target both 55160:55160
-      redistribute learned
-      vlan 160
    !
    address-family evpn
       neighbor EVPN-OVERLAY-PEERS activate

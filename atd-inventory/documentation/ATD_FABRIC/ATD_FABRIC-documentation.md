@@ -119,8 +119,6 @@
 | ---- | ---- | ------------- | ------------| ----------- | -------- | ---- | ----------- | ------------------- | ------- |
 | s1-host1 | Eth1 | s1-leaf1 | Ethernet4 | SERVER_s1-host1_Eth1 | False | access | 110 | - | TENANT_A |
 | s1-host1 | Eth2 | s1-leaf2 | Ethernet4 | SERVER_s1-host1_Eth2 | False | access | 110 | - | TENANT_A |
-| s1-host2 | Eth1 | s1-leaf3 | Ethernet4 | SERVER_s1-host2_Eth1 | False | access | 110 | - | TENANT_A |
-| s1-host2 | Eth2 | s1-leaf4 | Ethernet4 | SERVER_s1-host2_Eth2 | False | access | 110 | - | TENANT_A |
 
 ### Port Profiles
 
